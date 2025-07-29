@@ -1,3 +1,4 @@
+import streamlit as st
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.chains.question_answering import load_qa_chain
@@ -30,10 +31,11 @@ def summarizer(pdf_file):
 
     # Step 5: Use LLM from OpenRouter (GPT-3.5-turbo)
     llm = ChatOpenAI(
-        model_name="openai/gpt-3.5-turbo",
-        base_url="https://openrouter.ai/api/v1",
-        api_key=os.getenv("OPENROUTER_API_KEY"),  # Store this in .streamlit/secrets.toml
-    )
+    model_name="openai/gpt-3.5-turbo",
+    base_url="https://openrouter.ai/api/v1",
+    api_key=st.secrets["OPENROUTER_API_KEY"],  # ✅ this line updated
+)
+
 
     # Step 6: Generate summary
     chain = load_qa_chain(llm, chain_type="stuff")
