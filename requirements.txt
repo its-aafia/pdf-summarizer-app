@@ -3,10 +3,10 @@ langchain
 tf-keras
 sentence-transformers
 pypdf
--U langchain langchain-community
+langchain langchain-community
 faiss-cpu
 openai
--U langchain-community langchain-openai langchain-huggingface
+langchain-community langchain-openai langchain-huggingface
 python-dotenv
 PyPDF2
 langchain_huggingface
