@@ -6,3 +6,5 @@ langchain-openai
 transformers
 torch
 PyPDF2
+sentence-transformers
+faiss-cpu
