@@ -2,6 +2,7 @@ streamlit
 langchain
 langchain-community
 langchain-huggingface
+langchain-openai
 transformers
 torch
 pypdf
