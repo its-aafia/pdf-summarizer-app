@@ -5,6 +5,8 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_openai import ChatOpenAI
 from PyPDF2 import PdfReader
+from langchain.chat_models import ChatOpenAI
+import os
 import tempfile
 
 def summarizer(pdf_file):
@@ -30,10 +32,10 @@ def summarizer(pdf_file):
 
     # Step 4: Chat LLM via OpenRouter (GPT-3.5 / GPT-4)
     llm = ChatOpenAI(
-        model_name="openai/gpt-3.5-turbo",
-        base_url="https://openrouter.ai/api/v1",
-        api_key="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",
-    )
+    model_name="openai/gpt-3.5-turbo",
+    base_url="https://openrouter.ai/api/v1",
+    api_key=os.getenv("OPENROUTER_API_KEY"),
+)
 
     # Step 5: Chain for QA/Summarization
     chain = load_qa_chain(llm, chain_type="stuff")
